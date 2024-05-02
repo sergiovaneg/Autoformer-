@@ -1,0 +1,16 @@
+name: keras_jax
+channels:
+  - nvidia
+  - conda-forge
+dependencies:
+  - cmaes
+  - ipykernel
+  - ipympl
+  - jax
+  - keras>=3
+  - optuna
+  - optuna-dashboard
+  - pydantic
+  - pydot
+  - python==3.12.1
+  - seaborn
