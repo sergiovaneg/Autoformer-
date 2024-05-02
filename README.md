@@ -2,7 +2,11 @@
 
 Code used to generate the results in "Multi-Window Autoformer for Dynamic Systems Modelling (Autoformer ++)" for the 8th Edition of the Workshop on Nonlinear System Identification Benchmarks.
 
-Usage:
+The architecture is derived from the [Autoformer](https://github.com/thuml/Autoformer), but implemented in Keras with the Jax Backend (should also compile with Tensorflow/Pytorch, but not tested), and improves it by allowing multiple periodicity windows across the Encoder/Decoder stacks, as well as future control signals passed to the Decoder.
+
+The [slides](./Multi_Window_Autoformer_for_Dynamic_Systems_Modelling.pdf) used during the presentation are also available in the repo.
+
+## Usage
 
 0. Set up the Python environment; [`keras_jax.yml`](./keras_jax.yml) provides a Conda env descriptor that can be used to automatically generate the virtual environment using `conda env create --file keras_jax.yml`
 1. Download the [medium-sized dataset](https://drive.google.com/file/d/1XrkV43ZKq-vlcwVz5OUiW2A2N51Bz5Lt/view?usp=sharing) and place `Benchmark_EEG_medium.mat` in the *data* directory
@@ -14,4 +18,23 @@ Usage:
     - `nohup python lstm_baseline.py -s "study_workshop" > lstm_baseline_timed.txt &`
 5. Generate the plots and numerical results using [`plot_results.py`](./plot_results.py) (No arguments)
 
-Additional hyperparameter spaces can be searched by creating a json file following the example in [`study_workshop.json`](./study_parameters/study_workshop.json) and placing it in the [`study_parameters`](./study_parameters/) directory.
+Additional hyperparameter spaces can be searched by creating a *JSON* file following the example in [`study_workshop.json`](./study_parameters/study_workshop.json) and placing it in the [`study_parameters`](./study_parameters/) directory.
+
+## Citation
+
+If you find this repo useful, please cite our paper.
+
+```bibtex
+@conference{autoformer++2024Vanegas,
+  title = {Multi-Window Autoformer for Dynamic Systems Modelling},
+  author = {Sergio Vanegas and Lasse Lensu and Fredy Ruiz},
+  year = 2024,
+  month = {April},
+  booktitle= {Book of Abstracts - Workshop on Nonlinear System Identification Benchmarks},
+  publisher = {Dalle Molle Institute for Artificial Intelligence},
+  address = {Lugano, Switzerland},
+  pages = {25},
+  editor = {Dario Piga and Marco Forgione and Maarten Schoukens},
+  organization = {LUT University}
+}
+```
