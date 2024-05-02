@@ -30,8 +30,8 @@ af_results = sio.loadmat(os.path.join(DATA_ROOT,
                                       "autoformer_results.mat"))
 
 inf_results = sio.loadmat(os.path.join(DATA_ROOT,
-                                        "results",
-                                        "informer_results.mat"))
+                                       "results",
+                                       "informer_results.mat"))
 
 lstm_results = sio.loadmat(os.path.join(DATA_ROOT,
                                         "results",
@@ -56,8 +56,8 @@ lstm_y_pred = np.mean(lstm_results["y_pred"][:, split_idx:, ...], -2)
 lstm_y_true = np.mean(lstm_results["y_true"][:, split_idx:, ...], -2)
 
 assert np.array_equal(afpp_x, lstm_x) \
-  and np.array_equal(af_x, lstm_x) \
-  and np.array_equal(inf_x, lstm_x), "Update the benchmarks"
+    and np.array_equal(af_x, lstm_x) \
+    and np.array_equal(inf_x, lstm_x), "Update the benchmarks"
 
 del afpp_results, af_results, inf_results, lstm_results
 
@@ -84,21 +84,21 @@ plt.plot(np.arange(lstm_y_true.shape[-1]),
          "--",
          label="LSTM Forecast")
 plt.legend()
-plt.xlim([0,512])
+plt.xlim([0, 512])
 
 os.makedirs("./figures/", exist_ok=True, mode=0o774)
 fig.savefig(os.path.join("figures",
                          "results_talk.eps"))
 
 print(f"Autoformer++ MSE: {
-  np.mean((afpp_y_pred - afpp_y_true)**2)} ± {
+    np.mean((afpp_y_pred - afpp_y_true)**2)} ± {
     np.std((afpp_y_pred - afpp_y_true)**2)}")
 print(f"Autoformer MSE: {
-  np.mean((af_y_pred - af_y_true)**2)} ± {
+    np.mean((af_y_pred - af_y_true)**2)} ± {
     np.std((af_y_pred - af_y_true)**2)}")
 print(f"Informer MSE: {
-  np.mean((inf_y_pred - inf_y_true)**2)} ± {
+    np.mean((inf_y_pred - inf_y_true)**2)} ± {
     np.std((inf_y_pred - inf_y_true)**2)}")
 print(f"LSTM MSE: {
-  np.mean((lstm_y_pred - lstm_y_true)**2)} ± {
+    np.mean((lstm_y_pred - lstm_y_true)**2)} ± {
     np.std((lstm_y_pred - lstm_y_true)**2)}")
